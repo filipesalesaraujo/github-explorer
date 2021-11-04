@@ -4,7 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-
+  // sourcemap
+  devtool: "eval-source-map",
   //    entrey: qual o arquivo principal da aplicação
   //    path.resolve resolve o problema da / (barra)
   //    __dirname pega o arquivo onde está (literalmente, ESTA DAQUI) a instruçõo
