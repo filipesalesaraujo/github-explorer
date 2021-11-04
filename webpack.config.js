@@ -1,11 +1,13 @@
 //  a / (barra) no windows troca para \\, por isso do import do PATH
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+// a const isDevelopmento verifica se estou em ambiente de desenvolvimento (process.env e uma variavel ambiente)
+const isDevelopment = process.env.NODE_ENV !== "production";
 module.exports = {
-  mode: "development",
-  // sourcemap
-  devtool: "eval-source-map",
+  // no mode, faz um if, se eu estiver em ambiente de desenvolvimento (isDevelipment), o mode roda  development, caso contrario, roda em production
+  mode: isDevelopment ? "development" : "production",
+  // da mesma forma que foi feito a condição no mode, em devtool tambem é feito esse if
+  devtool: isDevelopment ? "eval-source-map" : "source-map",
   //    entrey: qual o arquivo principal da aplicação
   //    path.resolve resolve o problema da / (barra)
   //    __dirname pega o arquivo onde está (literalmente, ESTA DAQUI) a instruçõo
