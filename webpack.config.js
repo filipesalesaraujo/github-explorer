@@ -1,5 +1,6 @@
 //  a / (barra) no windows troca para \\, por isso do import do PATH
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -18,6 +19,13 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  // lista de plugins
+  plugins: [
+    // html-webpack-plugin redenriza o HTML dentro da pasta PUBLIC, já com a tag script referenciando o bundle.js
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public", "index.html")
+    })
+  ],
   //   com module, posso instuir como deve trabalhar com cada tipo de arquivo
   module: {
     //   rules é uma array de regras
