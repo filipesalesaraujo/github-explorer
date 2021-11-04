@@ -2,6 +2,8 @@
 const path = require("path");
 
 module.exports = {
+  mode: "development",
+
   //    entrey: qual o arquivo principal da aplicação
   //    path.resolve resolve o problema da / (barra)
   //    __dirname pega o arquivo onde está (literalmente, ESTA DAQUI) a instruçõo
@@ -14,7 +16,6 @@ module.exports = {
   },
   //    por padrao, webpack lê JS, mas caso tenha que add uma extensao, é presico passar essa instruçõo, e nesse caso, preciso passar a instruçõo para ler JSX
   resolve: {
-    fallback: { assert: false },
     extensions: [".js", ".jsx"],
   },
   //   com module, posso instuir como deve trabalhar com cada tipo de arquivo
