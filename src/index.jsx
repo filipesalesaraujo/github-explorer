@@ -1,5 +1,4 @@
 import React from "react";
 
-function App() {
-  return <h1>Hello World</h1>;
-}
+// não precisa colocar a extensão .jsx quando importa um .jsx, pois no webpack.config.js, tem o resolve: { extensions: [".js", ".jsx"], },
+import { App } from "./App";
