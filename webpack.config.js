@@ -50,6 +50,13 @@ module.exports = {
         //   e nessa regra, é utilizada o babel-loader, lib que faz a integração do babel com o webpack (CONVERTER O JSX PARA O BUNDLE.JS)
         use: "babel-loader",
       },
+      // regra do arquivo css
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        // quando for dois loaders se utiliza array
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
 };
