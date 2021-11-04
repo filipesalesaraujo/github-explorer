@@ -52,10 +52,10 @@ module.exports = {
       },
       // regra do arquivo css
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         exclude: /node_modules/,
         // quando for dois loaders se utiliza array
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
