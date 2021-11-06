@@ -1,6 +1,8 @@
 //  a / (barra) no windows troca para \\, por isso do import do PATH
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ReactRefrashWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+
 // a const isDevelopmento verifica se estou em ambiente de desenvolvimento (process.env e uma variavel ambiente)
 const isDevelopment = process.env.NODE_ENV !== "production";
 module.exports = {
@@ -27,14 +29,18 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "public"),
     },
+    hot: true,
   },
   // lista de plugins
   plugins: [
+    isDevelopment && new ReactRefrashWebpackPlugin(),
     // html-webpack-plugin redenriza o HTML dentro da pasta PUBLIC, já com a tag script referenciando o bundle.js
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
     }),
-  ],
+  ].filter(Boolean),
+  // filter(Boolean) vai remover o false da condicional
+
   //   com module, posso instuir como deve trabalhar com cada tipo de arquivo
   module: {
     //   rules é uma array de regras
@@ -48,7 +54,14 @@ module.exports = {
         //   exclude: exluir todos os arquivos que estao dentro da pasta node_modules
         exclude: /node_modules/,
         //   e nessa regra, é utilizada o babel-loader, lib que faz a integração do babel com o webpack (CONVERTER O JSX PARA O BUNDLE.JS)
-        use: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            plugins: [
+              isDevelopment && require.resolve("react-refresh/babel"),
+            ].filter(Boolean),
+          },
+        },
       },
       // regra do arquivo css
       {
