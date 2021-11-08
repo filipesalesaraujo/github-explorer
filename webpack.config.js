@@ -14,7 +14,7 @@ module.exports = {
   //    path.resolve resolve o problema da / (barra)
   //    __dirname pega o arquivo onde está (literalmente, ESTA DAQUI) a instruçõo
   //    com o __dirname, instruo para que va para a pasta src (ela esta dentro da mesma pasta que esse arquivo), e em vez de colocar a / (barra), coloca a virgula
-  entry: path.resolve(__dirname, "src", "index.jsx"),
+  entry: path.resolve(__dirname, "src", "index.tsx"),
   //output tem a instruçõo de onde o arquivo deve sair, o PATH é o caminho/pastas, e o filename é o nome do arquivo
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -22,7 +22,7 @@ module.exports = {
   },
   //    por padrao, webpack lê JS, mas caso tenha que add uma extensao, é presico passar essa instruçõo, e nesse caso, preciso passar a instruçõo para ler JSX
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", ".ts", "tsx"],
   },
   // devServer (webpack-dev-server) fica assistindo as alterações e muda elas em tempo real, e com o directory, indico onde está o conteúdo estático
   devServer: {
@@ -50,7 +50,7 @@ module.exports = {
         //   regra do arquivo jsx
         //   test verifica se o arquivo é JSX ou nao
         //   o arquivo deve terminar com .jsxÇ o $ é onde ele deve terminar
-        test: /\.jsx$/,
+        test: /\.(j|t)sx$/,
         //   exclude: exluir todos os arquivos que estao dentro da pasta node_modules
         exclude: /node_modules/,
         //   e nessa regra, é utilizada o babel-loader, lib que faz a integração do babel com o webpack (CONVERTER O JSX PARA O BUNDLE.JS)
