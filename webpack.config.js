@@ -22,7 +22,7 @@ module.exports = {
   },
   //    por padrao, webpack lê JS, mas caso tenha que add uma extensao, é presico passar essa instruçõo, e nesse caso, preciso passar a instruçõo para ler JSX
   resolve: {
-    extensions: [".js", ".jsx", ".ts", "tsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   // devServer (webpack-dev-server) fica assistindo as alterações e muda elas em tempo real, e com o directory, indico onde está o conteúdo estático
   devServer: {
